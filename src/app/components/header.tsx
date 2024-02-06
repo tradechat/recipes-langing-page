@@ -58,10 +58,9 @@ export default function Header(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
   return (
     <>
-      <AppBar component="nav" color="success">
+      <AppBar component="nav" sx={{ bgcolor: "#008221" }}>
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}

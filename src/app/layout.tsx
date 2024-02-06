@@ -5,6 +5,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import Header from "./components/header";
+import Footer from "./components/footer";
+import { Box } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Recipes Langing Page",
@@ -17,12 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className="h-full">
+      <body className="h-full">
         <AppRouterCacheProvider options={{ key: "css" }}>
           <ThemeProvider theme={theme}>
-            <Header />
-            <div className="mt-[64px]">{children}</div>
+            <Box sx={{ pt: 10, position: "relative", minHeight: "100%" }}>
+              <Header />
+              {children}
+              <Footer />
+            </Box>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
