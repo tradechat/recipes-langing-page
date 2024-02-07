@@ -3,7 +3,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -17,6 +16,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Container } from "@mui/material";
 interface Props {
   window?: () => Window;
 }
@@ -38,7 +38,7 @@ export default function Header(props: Props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography variant="h6">
         <Link href={"/"}>Recipes</Link>
       </Typography>
       <Divider />
@@ -59,36 +59,38 @@ export default function Header(props: Props) {
   return (
     <>
       <AppBar component="nav" sx={{ bgcolor: "#008221" }}>
-        <Toolbar>
-          <IconButton
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, ml: 3 }}
-          >
-            <Link href={"/"}>Recipes</Link>
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" }, mr: 6 }}>
-            {navItems.map((item) => (
-              <Button
-                onClick={() => {
-                  router.push(item.nav);
-                }}
-                key={item.id}
-                sx={{ color: "#fff" }}
-              >
-                {item.title}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
+        <Container>
+          <Toolbar>
+            <IconButton
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" }, ml: 3 }}
+            >
+              <Link href={"/"}>Recipes</Link>
+            </Typography>
+            <Box sx={{ display: { xs: "none", sm: "block" }, mr: 6 }}>
+              {navItems.map((item) => (
+                <Button
+                  onClick={() => {
+                    router.push(item.nav);
+                  }}
+                  key={item.id}
+                  sx={{ color: "#fff" }}
+                >
+                  {item.title}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
       <nav>
         <Drawer
