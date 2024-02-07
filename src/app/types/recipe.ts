@@ -3,4 +3,10 @@ export interface Recipe {
   name: string;
   image: string;
   mealType: string;
+  rating: number;
+  caloriesPerServing: number;
+  cuisine: string;
+  difficulty: string;
+  instructions: Array<any>;
+  ingredients: Array<any>;
 }
